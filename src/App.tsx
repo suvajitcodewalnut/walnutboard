@@ -3,9 +3,14 @@ import { useState } from "react";
 // ICONS
 import { Plus, Kanban } from 'lucide-react';
 
+// COMPONENTS
+import { TaskModal } from "./Components/TaskModal";
+// import { useTaskStore } from "./store/store"; 
+
 
 const App = () => {
   const [showAddModal, setShowAddModal] = useState(false);
+  // const tasks = useTaskStore((state) => state.tasks); 
 
   return (
     <div className="min-h-screen bg-gray-950 text-white">
@@ -28,6 +33,8 @@ const App = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 h-[calc(100vh-8rem)]">
         </div>
       </main>
+
+      {showAddModal && <TaskModal onClose={() => setShowAddModal(false)} />}
     </div>
   );
 }
