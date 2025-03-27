@@ -1,7 +1,12 @@
+import { useState } from "react";
+
+// ICONS
 import { Plus, Kanban } from 'lucide-react';
 
 
-const App = () =>  {
+const App = () => {
+  const [showAddModal, setShowAddModal] = useState(false);
+
   return (
     <div className="min-h-screen bg-gray-950 text-white">
       <nav className="bg-gray-950 backdrop-blur-sm border-b-2 border-gray-800 px-4 py-4">
@@ -11,7 +16,8 @@ const App = () =>  {
             WalnutBoard
           </h1>
           <button
-            className="bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity"
+            onClick={() => setShowAddModal(true)}
+            className="cursor-pointer bg-gradient-to-r from-blue-500 to-purple-600 px-4 py-2 rounded-lg flex items-center gap-2 hover:opacity-90 transition-opacity"
           >
             <Plus size={20} />
           </button>
@@ -19,8 +25,8 @@ const App = () =>  {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 h-[calc(100vh-8rem)]">
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 h-[calc(100vh-8rem)]">
+        </div>
       </main>
     </div>
   );
