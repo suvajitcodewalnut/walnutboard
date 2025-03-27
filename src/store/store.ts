@@ -1,3 +1,4 @@
+// store.ts
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { Task, Status } from '../types';
@@ -6,6 +7,7 @@ interface TaskStore {
   tasks: Task[];
   addTask: (task: Omit<Task, 'id' | 'status'>) => void;
   moveTask: (taskId: string, status: Status) => void;
+  deleteTask: (taskId: string) => void; // New deletion method
 }
 
 export const useTaskStore = create<TaskStore>()(
@@ -29,9 +31,13 @@ export const useTaskStore = create<TaskStore>()(
             task.id === taskId ? { ...task, status: newStatus } : task
           ),
         })),
+      deleteTask: (taskId) =>
+        set((state) => ({
+          tasks: state.tasks.filter((task) => task.id !== taskId),
+        })),
     }),
     {
-      name: 'walnutboard', 
+      name: 'walnutboard',
     }
   )
 );
