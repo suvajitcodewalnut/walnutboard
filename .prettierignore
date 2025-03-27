@@ -1,0 +1,29 @@
+# Ignore artifacts:
+build
+dist
+node_modules
+.cache
+
+# Ignore environment settings
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Ignore logs and debugging files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Ignore editor settings
+.vscode
+.idea
+*.swp
+
+# Ignore static files
+public/static
+public/assets
+
+# Ignore generated files
+coverage
