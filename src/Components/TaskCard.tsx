@@ -47,7 +47,7 @@ export function TaskCard({ task, isDragging, onClick }: TaskCardProps) {
 
   // Handle deletion of the task
   const handleDelete = (e: React.MouseEvent) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     deleteTask(task.id);
   };
 
@@ -59,8 +59,8 @@ export function TaskCard({ task, isDragging, onClick }: TaskCardProps) {
       {...listeners}
       onClick={handleClick}
       className={`bg-gray-800/50 backdrop-blur-sm p-4 rounded-lg border cursor-move transition-all duration-200 group ${isSortableDragging || isDragging
-          ? 'border-purple-500 ring-2 ring-purple-500/20 rotate-3 scale-105'
-          : 'border-gray-700 hover:border-gray-600'
+        ? 'border-purple-500 ring-2 ring-purple-500/20 rotate-3 scale-105'
+        : 'border-gray-700 hover:border-gray-600'
         }`}
     >
       <div className="flex items-start justify-between">
@@ -69,8 +69,11 @@ export function TaskCard({ task, isDragging, onClick }: TaskCardProps) {
           {/* Cross icon for deletion */}
           <X
             className="w-5 h-5 text-gray-500 hover:text-red-500 cursor-pointer"
-            onMouseDown={(e) => e.stopPropagation()}
-            onClick={handleDelete}
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              handleDelete(e);
+            }}
           />
           <GripVertical className="w-5 h-5 text-gray-500 opacity-0 group-hover:opacity-100 transition-opacity" />
         </div>
