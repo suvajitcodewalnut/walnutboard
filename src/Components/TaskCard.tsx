@@ -79,16 +79,22 @@ export function TaskCard({ task, isDragging, onClick }: TaskCardProps) {
         </div>
       </div>
       <p className="text-sm text-gray-400 mb-3 line-clamp-2">{task.description}</p>
-      <div className="flex items-center justify-between text-sm">
-        <span
-          className={`px-2 py-1 rounded-full ${priorityColors[task.priority]}`}
-        >
-          {task.priority}
-        </span>
+      <div className="flex flex-col gap-2">
+        <div className="flex items-center gap-2">
+          <span
+            className={`px-2 py-1 rounded-full ${priorityColors[task.priority]}`}
+          >
+            {task.priority}
+          </span>
+          <span className="px-2 py-1 rounded-full bg-gray-700 text-gray-300">
+            {task.status}
+          </span>
+        </div>
         <div className="text-gray-400 flex items-center gap-2">
           <CalendarRange className="w-4 h-4" />
-          <div>
+          <div className='flex items-center justify-center'>
             <div>{format(new Date(task.startDate), 'MMM d')}</div>
+            <div> - </div>
             <div>{format(new Date(task.endDate), 'MMM d')}</div>
           </div>
         </div>

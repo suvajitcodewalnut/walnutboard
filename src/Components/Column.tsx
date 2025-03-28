@@ -17,22 +17,22 @@ interface ColumnProps {
 }
 
 const statusConfig = {
-  backlog: {
+  'backlog': {
     title: 'BACKLOG',
     gradient: 'from-pink-500 to-rose-500',
     icon: ListTodo,
   },
   'in-progress': {
-    title: 'INPROGRESS',
+    title: 'PROGRESS',
     gradient: 'from-orange-500 to-amber-500',
     icon: Timer,
   },
-  review: {
+  'review': {
     title: 'REVIEW',
     gradient: 'from-blue-500 to-cyan-500',
     icon: Eye,
   },
-  completed: {
+  'completed': {
     title: 'COMPLETED',
     gradient: 'from-green-500 to-emerald-500',
     icon: CheckCircle2,
@@ -53,11 +53,10 @@ export function Column({ status, tasks, onTaskClick }: ColumnProps) {
       </h2>
       <div
         ref={setNodeRef}
-        className={`flex-1 bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border ${
-          isOver 
-            ? 'border-purple-500 ring-2 ring-purple-500/20' 
+        className={`flex-1 bg-gray-900/50 backdrop-blur-sm rounded-lg p-4 border ${isOver
+            ? 'border-purple-500 ring-2 ring-purple-500/20'
             : 'border-gray-800'
-        } transition-all duration-200`}
+          } transition-all duration-200`}
       >
         <SortableContext
           items={tasks.map((t) => t.id)}
@@ -65,8 +64,8 @@ export function Column({ status, tasks, onTaskClick }: ColumnProps) {
         >
           <div className="space-y-3">
             {tasks.map((task) => (
-              <TaskCard 
-                key={task.id} 
+              <TaskCard
+                key={task.id}
                 task={task}
                 onClick={() => onTaskClick(task)}
               />
