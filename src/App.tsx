@@ -11,6 +11,7 @@ import { useTaskStore } from "./store/store";
 import { TaskModal } from "./Components/TaskModal";
 import { Column } from "./Components/Column";
 import { TaskCard } from "./Components/TaskCard";
+import { TaskDetailsModal } from "./Components/TaskDetailsModal";
 
 // DND-KIT
 import {
@@ -118,6 +119,10 @@ const App = () => {
       </main>
 
       {showAddModal && <TaskModal onClose={() => setShowAddModal(false)} />}
+      {selectedTask && (
+        <TaskDetailsModal task={selectedTask} onClose={() => setSelectedTask(null)} />
+      )}
+
     </div>
   );
 }
